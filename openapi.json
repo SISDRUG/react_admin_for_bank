@@ -1,2826 +1,1901 @@
 {
-  "openapi": "3.0.3",
-  "info": {
-    "title": "OpenAPI definition",
-    "description": "repo API",
-    "version": "1.0.0"
-  },
-  "servers": [
-    {
-      "url": "http://localhost:8080",
-      "description": "Generated server url"
-    }
-  ],
-  "paths": {
-    "/rest/admin-ui/bankAccounts": {
-      "get": {
-        "tags": [
-          "bank-account-resource"
-        ],
-        "operationId": "getAll",
-        "parameters": [
-          {
-            "name": "pageable",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Pageable"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/PagedModelBankAccount"
-                }
-              }
-            }
+  "snapshot": {
+    "created": "2025-02-25T03:10:50.551",
+    "database": {
+      "productVersion": "2024.3.3",
+      "shortName": "intellijPsiClass",
+      "majorVersion": "0",
+      "minorVersion": "0",
+      "user": "sisdrug",
+      "productName": "Amplicode Intellij",
+      "url": "jpab?generationContext=0381e7d2-74d1-4720-88e4-1970ce6c4294"
+    },
+    "metadata": {
+      "generationContext": {
+        "dbmsType": "postgresql"
+      }
+    },
+    "objects": {
+      "liquibase.structure.core.Catalog": [
+        {
+          "catalog": {
+            "default": true,
+            "name": "JPA_BUDDY",
+            "snapshotId": "22071649"
           }
         }
-      },
-      "post": {
-        "tags": [
-          "bank-account-resource"
-        ],
-        "operationId": "create",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
+      ]
+      ,
+      "liquibase.structure.core.Column": [
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "account_status",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071659",
+            "snapshotId": "22071666",
+            "type": {
+              "typeName": "BOOLEAN"
             }
-          },
-          "required": true
+          }
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/BankAccount"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "address",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071712",
+            "snapshotId": "22071718",
+            "type": {
+              "columnSize": "255!{java.lang.Integer}",
+              "typeName": "VARCHAR"
             }
           }
-        }
-      },
-      "patch": {
-        "tags": [
-          "bank-account-resource"
-        ],
-        "operationId": "patchMany",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer",
-                    "format": "int64"
-                  }
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "balance",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071659",
+            "snapshotId": "22071663",
+            "type": {
+              "typeName": "BIGINT"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "bank-account-resource"
-        ],
-        "operationId": "deleteMany",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/bankAccounts/{id}": {
-      "get": {
-        "tags": [
-          "bank-account-resource"
-        ],
-        "operationId": "getOne",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/BankAccount"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "bank-account-resource"
-        ],
-        "operationId": "patch",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/BankAccount"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "balance",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071679",
+            "snapshotId": "22071685",
+            "type": {
+              "typeName": "BIGINT"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "bank-account-resource"
-        ],
-        "operationId": "delete",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/BankAccount"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/bankAccounts/by-ids": {
-      "get": {
-        "tags": [
-          "bank-account-resource"
-        ],
-        "operationId": "getMany",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BankAccount"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/cards": {
-      "get": {
-        "tags": [
-          "card-resource"
-        ],
-        "operationId": "getAll_1",
-        "parameters": [
-          {
-            "name": "pageable",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Pageable"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/PagedModelCard"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "card-resource"
-        ],
-        "operationId": "create_1",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Card"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Card"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "bank_account_id",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071745",
+            "snapshotId": "22071747",
+            "type": {
+              "typeName": "BIGINT"
             }
           }
-        }
-      },
-      "patch": {
-        "tags": [
-          "card-resource"
-        ],
-        "operationId": "patchMany_1",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer",
-                    "format": "int64"
-                  }
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "card_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071651",
+            "snapshotId": "22071655",
+            "type": {
+              "typeName": "BIGINT"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "card-resource"
-        ],
-        "operationId": "deleteMany_1",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/cards/{id}": {
-      "get": {
-        "tags": [
-          "card-resource"
-        ],
-        "operationId": "getOne_1",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Card"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "card-resource"
-        ],
-        "operationId": "patch_1",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Card"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "card_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071753",
+            "snapshotId": "22071759",
+            "type": {
+              "typeName": "BIGINT"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "card-resource"
-        ],
-        "operationId": "delete_1",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Card"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/cards/by-ids": {
-      "get": {
-        "tags": [
-          "card-resource"
-        ],
-        "operationId": "getMany_1",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Card"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/credentials": {
-      "get": {
-        "tags": [
-          "credential-resource"
-        ],
-        "operationId": "getAll_2",
-        "parameters": [
-          {
-            "name": "pageable",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Pageable"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/PagedModelCredential"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "credential-resource"
-        ],
-        "operationId": "create_2",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Credential"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Credential"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "card_number",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071679",
+            "snapshotId": "22071684",
+            "type": {
+              "typeName": "BIGINT"
             }
           }
-        }
-      },
-      "patch": {
-        "tags": [
-          "credential-resource"
-        ],
-        "operationId": "patchMany_2",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer",
-                    "format": "int64"
-                  }
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "card_status",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071679",
+            "snapshotId": "22071688",
+            "type": {
+              "columnSize": "20!{java.lang.Integer}",
+              "typeName": "VARCHAR"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "credential-resource"
-        ],
-        "operationId": "deleteMany_2",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/credentials/{id}": {
-      "get": {
-        "tags": [
-          "credential-resource"
-        ],
-        "operationId": "getOne_2",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Credential"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "credential-resource"
-        ],
-        "operationId": "patch_2",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Credential"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "cashback",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071693",
+            "snapshotId": "22071696",
+            "type": {
+              "columnSize": "5!{java.lang.Integer}",
+              "decimalDigits": "2!{java.lang.Integer}",
+              "typeName": "DECIMAL"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "credential-resource"
-        ],
-        "operationId": "delete_2",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Credential"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/credentials/by-ids": {
-      "get": {
-        "tags": [
-          "credential-resource"
-        ],
-        "operationId": "getMany_2",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Credential"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/currencies": {
-      "get": {
-        "tags": [
-          "currency-resource"
-        ],
-        "operationId": "getAll_3",
-        "parameters": [
-          {
-            "name": "pageable",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Pageable"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/PagedModelCurrency"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "currency-resource"
-        ],
-        "operationId": "create_3",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Currency"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Currency"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "contact_phone",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071712",
+            "snapshotId": "22071717",
+            "type": {
+              "columnSize": "20!{java.lang.Integer}",
+              "typeName": "VARCHAR"
             }
           }
-        }
-      },
-      "patch": {
-        "tags": [
-          "currency-resource"
-        ],
-        "operationId": "patchMany_3",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer",
-                    "format": "int64"
-                  }
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "created_at",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071712",
+            "snapshotId": "22071719",
+            "type": {
+              "typeName": "timestamp with time zone"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "currency-resource"
-        ],
-        "operationId": "deleteMany_3",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/currencies/{id}": {
-      "get": {
-        "tags": [
-          "currency-resource"
-        ],
-        "operationId": "getOne_3",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Currency"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "currency-resource"
-        ],
-        "operationId": "patch_3",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Currency"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "credentials_id",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071745",
+            "snapshotId": "22071748",
+            "type": {
+              "typeName": "BIGINT"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "currency-resource"
-        ],
-        "operationId": "delete_3",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Currency"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/currencies/by-ids": {
-      "get": {
-        "tags": [
-          "currency-resource"
-        ],
-        "operationId": "getMany_3",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Currency"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/loginDetails": {
-      "get": {
-        "tags": [
-          "login-detail-resource"
-        ],
-        "operationId": "getAll_4",
-        "parameters": [
-          {
-            "name": "pageable",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Pageable"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/PagedModelLoginDetail"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "login-detail-resource"
-        ],
-        "operationId": "create_4",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LoginDetail"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/LoginDetail"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "cur_abbreviation",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071670",
+            "snapshotId": "22071672",
+            "type": {
+              "columnSize": "10!{java.lang.Integer}",
+              "typeName": "VARCHAR"
             }
           }
-        }
-      },
-      "patch": {
-        "tags": [
-          "login-detail-resource"
-        ],
-        "operationId": "patchMany_4",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer",
-                    "format": "int64"
-                  }
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "cur_rate",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071670",
+            "snapshotId": "22071674",
+            "type": {
+              "columnSize": "10!{java.lang.Integer}",
+              "decimalDigits": "4!{java.lang.Integer}",
+              "typeName": "DECIMAL"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "login-detail-resource"
-        ],
-        "operationId": "deleteMany_4",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/loginDetails/{id}": {
-      "get": {
-        "tags": [
-          "login-detail-resource"
-        ],
-        "operationId": "getOne_4",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/LoginDetail"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "login-detail-resource"
-        ],
-        "operationId": "patch_4",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/LoginDetail"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "cur_scale",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071670",
+            "snapshotId": "22071673",
+            "type": {
+              "typeName": "BIGINT"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "login-detail-resource"
-        ],
-        "operationId": "delete_4",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/LoginDetail"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/loginDetails/by-ids": {
-      "get": {
-        "tags": [
-          "login-detail-resource"
-        ],
-        "operationId": "getMany_4",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/LoginDetail"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/operations": {
-      "get": {
-        "tags": [
-          "operation-resource"
-        ],
-        "operationId": "getAll_5",
-        "parameters": [
-          {
-            "name": "pageable",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Pageable"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/PagedModelOperation"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "operation-resource"
-        ],
-        "operationId": "create_5",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Operation"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Operation"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "currency_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071659",
+            "snapshotId": "22071662",
+            "type": {
+              "typeName": "BIGINT"
             }
           }
-        }
-      },
-      "patch": {
-        "tags": [
-          "operation-resource"
-        ],
-        "operationId": "patchMany_5",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer",
-                    "format": "int64"
-                  }
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "currency_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071753",
+            "snapshotId": "22071761",
+            "type": {
+              "typeName": "BIGINT"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "operation-resource"
-        ],
-        "operationId": "deleteMany_5",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/operations/{id}": {
-      "get": {
-        "tags": [
-          "operation-resource"
-        ],
-        "operationId": "getOne_5",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Operation"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "operation-resource"
-        ],
-        "operationId": "patch_5",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Operation"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "date_of_birth",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071712",
+            "snapshotId": "22071716",
+            "type": {
+              "typeName": "DATE"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "operation-resource"
-        ],
-        "operationId": "delete_5",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Operation"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/operations/by-ids": {
-      "get": {
-        "tags": [
-          "operation-resource"
-        ],
-        "operationId": "getMany_5",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Operation"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/packages": {
-      "get": {
-        "tags": [
-          "package-resource"
-        ],
-        "operationId": "getAll_6",
-        "parameters": [
-          {
-            "name": "pageable",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Pageable"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/PagedModelPackage"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "package-resource"
-        ],
-        "operationId": "deleteMany_6",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/packages/{id}": {
-      "get": {
-        "tags": [
-          "package-resource"
-        ],
-        "operationId": "getOne_6",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Package"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "package-resource"
-        ],
-        "operationId": "patch_6",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Package"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "date_of_creation",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071659",
+            "snapshotId": "22071665",
+            "type": {
+              "typeName": "DATE"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "package-resource"
-        ],
-        "operationId": "delete_6",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Package"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/packages/by-ids": {
-      "get": {
-        "tags": [
-          "package-resource"
-        ],
-        "operationId": "getMany_6",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Package"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/roles": {
-      "get": {
-        "tags": [
-          "role-resource"
-        ],
-        "operationId": "getAll_7",
-        "parameters": [
-          {
-            "name": "pageable",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Pageable"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/PagedModelRole"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "role-resource"
-        ],
-        "operationId": "create_6",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Role"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Role"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "date_time",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071753",
+            "snapshotId": "22071757",
+            "type": {
+              "typeName": "timestamp with time zone"
             }
           }
-        }
-      },
-      "patch": {
-        "tags": [
-          "role-resource"
-        ],
-        "operationId": "patchMany_6",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer",
-                    "format": "int64"
-                  }
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "description",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071753",
+            "snapshotId": "22071768",
+            "type": {
+              "columnSize": "255!{java.lang.Integer}",
+              "typeName": "VARCHAR"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "role-resource"
-        ],
-        "operationId": "deleteMany_7",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/roles/{id}": {
-      "get": {
-        "tags": [
-          "role-resource"
-        ],
-        "operationId": "getOne_7",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Role"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "role-resource"
-        ],
-        "operationId": "patch_7",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Role"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "email",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071700",
+            "snapshotId": "22071708",
+            "type": {
+              "typeName": "VARCHAR"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "role-resource"
-        ],
-        "operationId": "delete_7",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/Role"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/roles/by-ids": {
-      "get": {
-        "tags": [
-          "role-resource"
-        ],
-        "operationId": "getMany_7",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Role"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/users": {
-      "get": {
-        "tags": [
-          "user-resource"
-        ],
-        "operationId": "getAll_8",
-        "parameters": [
-          {
-            "name": "pageable",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "$ref": "#/components/schemas/Pageable"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/PagedModelUser"
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "user-resource"
-        ],
-        "operationId": "create_7",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "email",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071726",
+            "snapshotId": "22071725",
+            "type": {
+              "columnSize": "255!{java.lang.Integer}",
+              "typeName": "VARCHAR"
             }
           }
-        }
-      },
-      "patch": {
-        "tags": [
-          "user-resource"
-        ],
-        "operationId": "patchMany_7",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "type": "integer",
-                    "format": "int64"
-                  }
-                }
-              }
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "holder_name",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071679",
+            "snapshotId": "22071689",
+            "type": {
+              "columnSize": "150!{java.lang.Integer}",
+              "typeName": "VARCHAR"
             }
           }
-        }
-      },
-      "delete": {
-        "tags": [
-          "user-resource"
-        ],
-        "operationId": "deleteMany_8",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/rest/admin-ui/users/{id}": {
-      "get": {
-        "tags": [
-          "user-resource"
-        ],
-        "operationId": "getOne_8",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          }
-        }
-      },
-      "patch": {
-        "tags": [
-          "user-resource"
-        ],
-        "operationId": "patch_8",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/JsonNode"
-              }
-            }
-          },
-          "required": true
         },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
-            }
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "user-resource"
-        ],
-        "operationId": "delete_8",
-        "parameters": [
-          {
+        {
+          "column": {
+            "autoIncrementInformation": {
+              "incrementBy": "1!{java.math.BigInteger}",
+              "startWith": "1!{java.math.BigInteger}"
+            },
+            "certainDataType": false,
             "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int64"
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071659",
+            "snapshotId": "22071658",
+            "type": {
+              "typeName": "BIGINT"
             }
           }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/User"
-                }
-              }
+        },
+        {
+          "column": {
+            "autoIncrementInformation": {
+              "incrementBy": "1!{java.math.BigInteger}",
+              "startWith": "1!{java.math.BigInteger}"
+            },
+            "certainDataType": false,
+            "name": "id",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071651",
+            "snapshotId": "22071653",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "autoIncrementInformation": {
+              "incrementBy": "1!{java.math.BigInteger}",
+              "startWith": "1!{java.math.BigInteger}"
+            },
+            "certainDataType": false,
+            "name": "id",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071679",
+            "snapshotId": "22071678",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "autoIncrementInformation": {
+              "incrementBy": "1!{java.math.BigInteger}",
+              "startWith": "1!{java.math.BigInteger}"
+            },
+            "certainDataType": false,
+            "name": "id",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071700",
+            "snapshotId": "22071702",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "autoIncrementInformation": {
+              "incrementBy": "1!{java.math.BigInteger}",
+              "startWith": "1!{java.math.BigInteger}"
+            },
+            "certainDataType": false,
+            "name": "id",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071670",
+            "snapshotId": "22071669",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "autoIncrementInformation": {
+              "incrementBy": "1!{java.math.BigInteger}",
+              "startWith": "1!{java.math.BigInteger}"
+            },
+            "certainDataType": false,
+            "name": "id",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071726",
+            "snapshotId": "22071728",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "autoIncrementInformation": {
+              "incrementBy": "1!{java.math.BigInteger}",
+              "startWith": "1!{java.math.BigInteger}"
+            },
+            "certainDataType": false,
+            "name": "id",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071753",
+            "snapshotId": "22071755",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "autoIncrementInformation": {
+              "incrementBy": "1!{java.math.BigInteger}",
+              "startWith": "1!{java.math.BigInteger}"
+            },
+            "certainDataType": false,
+            "name": "id",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071693",
+            "snapshotId": "22071692",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "autoIncrementInformation": {
+              "incrementBy": "1!{java.math.BigInteger}",
+              "startWith": "1!{java.math.BigInteger}"
+            },
+            "certainDataType": false,
+            "name": "id",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071739",
+            "snapshotId": "22071741",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "autoIncrementInformation": {
+              "incrementBy": "1!{java.math.BigInteger}",
+              "startWith": "1!{java.math.BigInteger}"
+            },
+            "certainDataType": false,
+            "name": "id",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071712",
+            "snapshotId": "22071711",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "is_active",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071712",
+            "snapshotId": "22071721",
+            "type": {
+              "typeName": "BOOLEAN"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "is_virtual",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071679",
+            "snapshotId": "22071690",
+            "type": {
+              "typeName": "BOOLEAN"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "last_login_date",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071726",
+            "snapshotId": "22071731",
+            "type": {
+              "typeName": "DATE"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "last_operation_date",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071659",
+            "snapshotId": "22071667",
+            "type": {
+              "typeName": "timestamp with time zone"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "login_attempts",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071726",
+            "snapshotId": "22071732",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "month_of_exp",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071679",
+            "snapshotId": "22071687",
+            "type": {
+              "typeName": "DATE"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "name",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071693",
+            "snapshotId": "22071695",
+            "type": {
+              "columnSize": "100!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "name",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071712",
+            "snapshotId": "22071714",
+            "type": {
+              "columnSize": "100!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "operation_type",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071753",
+            "snapshotId": "22071766",
+            "type": {
+              "columnSize": "50!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "package_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071679",
+            "snapshotId": "22071682",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "password",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071726",
+            "snapshotId": "22071730",
+            "type": {
+              "columnSize": "255!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "password_hash_salt",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071726",
+            "snapshotId": "22071734",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "recipient_details",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071753",
+            "snapshotId": "22071764",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "reference_number",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071753",
+            "snapshotId": "22071763",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "role",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071700",
+            "snapshotId": "22071704",
+            "type": {
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "role",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071739",
+            "snapshotId": "22071738",
+            "type": {
+              "columnSize": "50!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "status",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071753",
+            "snapshotId": "22071767",
+            "type": {
+              "columnSize": "20!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "surname",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071712",
+            "snapshotId": "22071715",
+            "type": {
+              "columnSize": "100!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "two_factor_auth_enabled",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071726",
+            "snapshotId": "22071735",
+            "type": {
+              "typeName": "BOOLEAN"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "type",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071659",
+            "snapshotId": "22071664",
+            "type": {
+              "columnSize": "50!{java.lang.Integer}",
+              "typeName": "VARCHAR"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "updated_at",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071712",
+            "snapshotId": "22071720",
+            "type": {
+              "typeName": "timestamp with time zone"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "user_id",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071700",
+            "snapshotId": "22071706",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "user_status",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071726",
+            "snapshotId": "22071733",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "value",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071753",
+            "snapshotId": "22071765",
+            "type": {
+              "typeName": "BIGINT"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "verification_status",
+            "nullable": true,
+            "relation": "liquibase.structure.core.Table#22071712",
+            "snapshotId": "22071722",
+            "type": {
+              "typeName": "BOOLEAN"
+            }
+          }
+        },
+        {
+          "column": {
+            "certainDataType": false,
+            "name": "year_of_exp",
+            "nullable": false,
+            "relation": "liquibase.structure.core.Table#22071679",
+            "snapshotId": "22071686",
+            "type": {
+              "typeName": "DATE"
             }
           }
         }
-      }
-    },
-    "/rest/admin-ui/users/by-ids": {
-      "get": {
-        "tags": [
-          "user-resource"
-        ],
-        "operationId": "getMany_8",
-        "parameters": [
-          {
-            "name": "ids",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "integer",
-                "format": "int64"
-              }
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/User"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "components": {
-    "schemas": {
-      "PageMetadata": {
-        "type": "object",
-        "properties": {
-          "size": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "number": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "totalElements": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "totalPages": {
-            "type": "integer",
-            "format": "int64"
-          }
-        }
-      },
-      "BigDecimal": {
-        "type": "object",
-        "properties": {}
-      },
-      "Currency": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "curAbbreviation": {
-            "type": "string"
-          },
-          "curScale": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "curRate": {
-            "$ref": "#/components/schemas/BigDecimal"
-          }
-        }
-      },
-      "BankAccount": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "balance": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "type": {
-            "type": "string"
-          },
-          "dateOfCreation": {
-            "type": "string",
-            "format": "date"
-          },
-          "currency": {
-            "$ref": "#/components/schemas/Currency"
-          },
-          "accountStatus": {
-            "type": "boolean"
-          },
-          "lastOperationDate": {
-            "type": "string",
-            "format": "date-time"
-          }
-        }
-      },
-      "PagedModelBankAccount": {
-        "type": "object",
-        "properties": {
-          "page": {
-            "$ref": "#/components/schemas/PageMetadata"
-          },
-          "content": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/BankAccount"
-            }
-          }
-        }
-      },
-      "Pageable": {
-        "type": "object",
-        "properties": {
-          "page": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "size": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "sort": {
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "JsonNode": {
-        "type": "object",
-        "properties": {
-          "integralNumber": {
-            "type": "boolean"
-          },
-          "double": {
-            "type": "boolean"
-          },
-          "valueNode": {
-            "type": "boolean"
-          },
-          "floatingPointNumber": {
-            "type": "boolean"
-          },
-          "bigInteger": {
-            "type": "boolean"
-          },
-          "nodeType": {
-            "type": "string",
-            "enum": [
-              "ARRAY",
-              "BINARY",
-              "BOOLEAN",
-              "MISSING",
-              "NULL",
-              "NUMBER",
-              "OBJECT",
-              "POJO",
-              "STRING"
+      ]
+      ,
+      "liquibase.structure.core.ForeignKey": [
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyRestrict!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#22071655"
             ]
-          },
-          "float": {
-            "type": "boolean"
-          },
-          "int": {
-            "type": "boolean"
-          },
-          "long": {
-            "type": "boolean"
-          },
-          "textual": {
-            "type": "boolean"
-          },
-          "empty": {
-            "type": "boolean"
-          },
-          "missingNode": {
-            "type": "boolean"
-          },
-          "pojo": {
-            "type": "boolean"
-          },
-          "number": {
-            "type": "boolean"
-          },
-          "boolean": {
-            "type": "boolean"
-          },
-          "null": {
-            "type": "boolean"
-          },
-          "array": {
-            "type": "boolean"
-          },
-          "binary": {
-            "type": "boolean"
-          },
-          "containerNode": {
-            "type": "boolean"
-          },
-          "short": {
-            "type": "boolean"
-          },
-          "bigDecimal": {
-            "type": "boolean"
-          },
-          "object": {
-            "type": "boolean"
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#22071651",
+            "name": "FK_BANK_ACCOUNTS_CARDS_ON_CARD",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#22071678"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#22071679",
+            "snapshotId": "22071677"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyRestrict!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#22071653"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#22071651",
+            "name": "FK_BANK_ACCOUNTS_CARDS_ON_ID",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#22071658"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#22071659",
+            "snapshotId": "22071657"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyRestrict!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#22071747"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#22071745",
+            "name": "FK_BANK_ACCOUNTS_CREDENTIALS_ON_BANK_ACCOUNT",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#22071658"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#22071659",
+            "snapshotId": "22071750"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyRestrict!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#22071748"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#22071745",
+            "name": "FK_BANK_ACCOUNTS_CREDENTIALS_ON_CREDENTIALS",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#22071702"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#22071700",
+            "snapshotId": "22071751"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyRestrict!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#22071662"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#22071659",
+            "name": "FK_BANK_ACCOUNTS_ON_CURRENCY",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#22071669"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#22071670",
+            "snapshotId": "22071668"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyRestrict!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#22071682"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#22071679",
+            "name": "FK_CARDS_ON_PACKAGE",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#22071692"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#22071693",
+            "snapshotId": "22071691"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyRestrict!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#22071708"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#22071700",
+            "name": "FK_CREDENTIALS_ON_EMAIL",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#22071725"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#22071726",
+            "snapshotId": "22071724"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyRestrict!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#22071704"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#22071700",
+            "name": "FK_CREDENTIALS_ON_ROLE",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#22071738"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#22071739",
+            "snapshotId": "22071737"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyRestrict!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#22071706"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#22071700",
+            "name": "FK_CREDENTIALS_ON_USER",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#22071711"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#22071712",
+            "snapshotId": "22071710"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyRestrict!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#22071759"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#22071753",
+            "name": "FK_OPERATIONS_ON_CARD",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#22071678"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#22071679",
+            "snapshotId": "22071770"
+          }
+        },
+        {
+          "foreignKey": {
+            "deleteRule": "importedKeyRestrict!{liquibase.structure.core.ForeignKeyConstraintType}",
+            "foreignKeyColumns": [
+              "liquibase.structure.core.Column#22071761"
+            ]
+            ,
+            "foreignKeyTable": "liquibase.structure.core.Table#22071753",
+            "name": "FK_OPERATIONS_ON_CURRENCY",
+            "primaryKeyColumns": [
+              "liquibase.structure.core.Column#22071669"
+            ]
+            ,
+            "primaryKeyTable": "liquibase.structure.core.Table#22071670",
+            "snapshotId": "22071769"
           }
         }
-      },
-      "Package": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          },
-          "cashback": {
-            "$ref": "#/components/schemas/BigDecimal"
+      ]
+      ,
+      "liquibase.structure.core.Index": [
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_bank_accounts",
+            "snapshotId": "22071660",
+            "table": "liquibase.structure.core.Table#22071659",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_bank_accounts_cards",
+            "snapshotId": "22071652",
+            "table": "liquibase.structure.core.Table#22071651",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "bank_account_id"
+                }
+              },
+              {
+                "column": {
+                  "name": "credentials_id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_bank_accounts_credentials",
+            "snapshotId": "22071746",
+            "table": "liquibase.structure.core.Table#22071745",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_cards",
+            "snapshotId": "22071680",
+            "table": "liquibase.structure.core.Table#22071679",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_credentials",
+            "snapshotId": "22071701",
+            "table": "liquibase.structure.core.Table#22071700",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_currencies",
+            "snapshotId": "22071671",
+            "table": "liquibase.structure.core.Table#22071670",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_login_details",
+            "snapshotId": "22071727",
+            "table": "liquibase.structure.core.Table#22071726",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_operations",
+            "snapshotId": "22071754",
+            "table": "liquibase.structure.core.Table#22071753",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_packages",
+            "snapshotId": "22071694",
+            "table": "liquibase.structure.core.Table#22071693",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_roles",
+            "snapshotId": "22071740",
+            "table": "liquibase.structure.core.Table#22071739",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "id"
+                }
+              }
+            ]
+            ,
+            "name": "IX_pk_users",
+            "snapshotId": "22071713",
+            "table": "liquibase.structure.core.Table#22071712",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "card_id"
+                }
+              }
+            ]
+            ,
+            "name": "card_id",
+            "snapshotId": "22071654",
+            "table": "liquibase.structure.core.Table#22071651",
+            "unique": false
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "card_number"
+                }
+              }
+            ]
+            ,
+            "name": "card_number",
+            "snapshotId": "22071683",
+            "table": "liquibase.structure.core.Table#22071679",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "role"
+                }
+              }
+            ]
+            ,
+            "name": "credentials_ibfk_2",
+            "snapshotId": "22071742",
+            "table": "liquibase.structure.core.Table#22071739",
+            "unique": false
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "credentials_id"
+                }
+              }
+            ]
+            ,
+            "name": "credentials_id",
+            "snapshotId": "22071749",
+            "table": "liquibase.structure.core.Table#22071745",
+            "unique": false
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "email"
+                }
+              }
+            ]
+            ,
+            "name": "email",
+            "snapshotId": "22071707",
+            "table": "liquibase.structure.core.Table#22071700",
+            "unique": false
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "email"
+                }
+              }
+            ]
+            ,
+            "name": "email",
+            "snapshotId": "22071729",
+            "table": "liquibase.structure.core.Table#22071726",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "id"
+                }
+              },
+              {
+                "column": {
+                  "name": "card_id"
+                }
+              }
+            ]
+            ,
+            "name": "id",
+            "snapshotId": "22071656",
+            "table": "liquibase.structure.core.Table#22071651",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "currency_id"
+                }
+              }
+            ]
+            ,
+            "name": "idx_bank_accounts_currency",
+            "snapshotId": "22071661",
+            "table": "liquibase.structure.core.Table#22071659",
+            "unique": false
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "package_id"
+                }
+              }
+            ]
+            ,
+            "name": "idx_cards_package",
+            "snapshotId": "22071681",
+            "table": "liquibase.structure.core.Table#22071679",
+            "unique": false
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "user_id"
+                }
+              }
+            ]
+            ,
+            "name": "idx_credentials_user",
+            "snapshotId": "22071705",
+            "table": "liquibase.structure.core.Table#22071700",
+            "unique": false
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "card_id"
+                }
+              }
+            ]
+            ,
+            "name": "idx_operations_card",
+            "snapshotId": "22071758",
+            "table": "liquibase.structure.core.Table#22071753",
+            "unique": false
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "currency_id"
+                }
+              }
+            ]
+            ,
+            "name": "idx_operations_currency",
+            "snapshotId": "22071760",
+            "table": "liquibase.structure.core.Table#22071753",
+            "unique": false
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "date_time"
+                }
+              }
+            ]
+            ,
+            "name": "idx_operations_date",
+            "snapshotId": "22071756",
+            "table": "liquibase.structure.core.Table#22071753",
+            "unique": false
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "reference_number"
+                }
+              }
+            ]
+            ,
+            "name": "reference_number",
+            "snapshotId": "22071762",
+            "table": "liquibase.structure.core.Table#22071753",
+            "unique": true
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "role"
+                }
+              }
+            ]
+            ,
+            "name": "role",
+            "snapshotId": "22071703",
+            "table": "liquibase.structure.core.Table#22071700",
+            "unique": false
+          }
+        },
+        {
+          "index": {
+            "columns": [
+              {
+                "column": {
+                  "name": "user_id"
+                }
+              },
+              {
+                "column": {
+                  "name": "email"
+                }
+              }
+            ]
+            ,
+            "name": "user_id",
+            "snapshotId": "22071709",
+            "table": "liquibase.structure.core.Table#22071700",
+            "unique": true
           }
         }
-      },
-      "Card": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "balance": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "packageField": {
-            "$ref": "#/components/schemas/Package"
-          },
-          "yearOfExp": {
-            "type": "string",
-            "format": "date"
-          },
-          "monthOfExp": {
-            "type": "string",
-            "format": "date"
-          },
-          "cardNumber": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "cardStatus": {
-            "type": "string"
-          },
-          "holderName": {
-            "type": "string"
-          },
-          "isVirtual": {
-            "type": "boolean"
+      ]
+      ,
+      "liquibase.structure.core.PrimaryKey": [
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#22071660",
+            "columns": [
+              "liquibase.structure.core.Column#22071658"
+            ]
+            ,
+            "name": "pk_bank_accounts",
+            "snapshotId": "22071676",
+            "table": "liquibase.structure.core.Table#22071659"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#22071652",
+            "columns": [
+              "liquibase.structure.core.Column#22071653"
+            ]
+            ,
+            "name": "pk_bank_accounts_cards",
+            "snapshotId": "22071699",
+            "table": "liquibase.structure.core.Table#22071651"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#22071746",
+            "columns": [
+              "liquibase.structure.core.Column#22071747",
+              "liquibase.structure.core.Column#22071748"
+            ]
+            ,
+            "name": "pk_bank_accounts_credentials",
+            "snapshotId": "22071752",
+            "table": "liquibase.structure.core.Table#22071745"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#22071680",
+            "columns": [
+              "liquibase.structure.core.Column#22071678"
+            ]
+            ,
+            "name": "pk_cards",
+            "snapshotId": "22071698",
+            "table": "liquibase.structure.core.Table#22071679"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#22071701",
+            "columns": [
+              "liquibase.structure.core.Column#22071702"
+            ]
+            ,
+            "name": "pk_credentials",
+            "snapshotId": "22071744",
+            "table": "liquibase.structure.core.Table#22071700"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#22071671",
+            "columns": [
+              "liquibase.structure.core.Column#22071669"
+            ]
+            ,
+            "name": "pk_currencies",
+            "snapshotId": "22071675",
+            "table": "liquibase.structure.core.Table#22071670"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#22071727",
+            "columns": [
+              "liquibase.structure.core.Column#22071728"
+            ]
+            ,
+            "name": "pk_login_details",
+            "snapshotId": "22071736",
+            "table": "liquibase.structure.core.Table#22071726"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#22071754",
+            "columns": [
+              "liquibase.structure.core.Column#22071755"
+            ]
+            ,
+            "name": "pk_operations",
+            "snapshotId": "22071771",
+            "table": "liquibase.structure.core.Table#22071753"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#22071694",
+            "columns": [
+              "liquibase.structure.core.Column#22071692"
+            ]
+            ,
+            "name": "pk_packages",
+            "snapshotId": "22071697",
+            "table": "liquibase.structure.core.Table#22071693"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#22071740",
+            "columns": [
+              "liquibase.structure.core.Column#22071741"
+            ]
+            ,
+            "name": "pk_roles",
+            "snapshotId": "22071743",
+            "table": "liquibase.structure.core.Table#22071739"
+          }
+        },
+        {
+          "primaryKey": {
+            "backingIndex": "liquibase.structure.core.Index#22071713",
+            "columns": [
+              "liquibase.structure.core.Column#22071711"
+            ]
+            ,
+            "name": "pk_users",
+            "snapshotId": "22071723",
+            "table": "liquibase.structure.core.Table#22071712"
           }
         }
-      },
-      "PagedModelCard": {
-        "type": "object",
-        "properties": {
-          "page": {
-            "$ref": "#/components/schemas/PageMetadata"
-          },
-          "content": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Card"
-            }
+      ]
+      ,
+      "liquibase.structure.core.Schema": [
+        {
+          "schema": {
+            "catalog": "liquibase.structure.core.Catalog#22071649",
+            "default": true,
+            "snapshotId": "22071650"
           }
         }
-      },
-      "User": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "name": {
-            "type": "string"
-          },
-          "surname": {
-            "type": "string"
-          },
-          "dateOfBirth": {
-            "type": "string",
-            "format": "date"
-          },
-          "contactPhone": {
-            "type": "string"
-          },
-          "address": {
-            "type": "string"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "updatedAt": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "isActive": {
-            "type": "boolean"
-          },
-          "verificationStatus": {
-            "type": "boolean"
+      ]
+      ,
+      "liquibase.structure.core.Table": [
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#22071658",
+              "liquibase.structure.core.Column#22071663",
+              "liquibase.structure.core.Column#22071664",
+              "liquibase.structure.core.Column#22071665",
+              "liquibase.structure.core.Column#22071662",
+              "liquibase.structure.core.Column#22071666",
+              "liquibase.structure.core.Column#22071667"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#22071660",
+              "liquibase.structure.core.Index#22071661"
+            ]
+            ,
+            "name": "bank_accounts",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#22071668"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#22071676",
+            "schema": "liquibase.structure.core.Schema#22071650",
+            "snapshotId": "22071659"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#22071653",
+              "liquibase.structure.core.Column#22071655"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#22071652",
+              "liquibase.structure.core.Index#22071654",
+              "liquibase.structure.core.Index#22071656"
+            ]
+            ,
+            "name": "bank_accounts_cards",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#22071657",
+              "liquibase.structure.core.ForeignKey#22071677"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#22071699",
+            "schema": "liquibase.structure.core.Schema#22071650",
+            "snapshotId": "22071651"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#22071747",
+              "liquibase.structure.core.Column#22071748"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#22071746",
+              "liquibase.structure.core.Index#22071749"
+            ]
+            ,
+            "name": "bank_accounts_credentials",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#22071750",
+              "liquibase.structure.core.ForeignKey#22071751"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#22071752",
+            "schema": "liquibase.structure.core.Schema#22071650",
+            "snapshotId": "22071745"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#22071678",
+              "liquibase.structure.core.Column#22071685",
+              "liquibase.structure.core.Column#22071682",
+              "liquibase.structure.core.Column#22071686",
+              "liquibase.structure.core.Column#22071687",
+              "liquibase.structure.core.Column#22071684",
+              "liquibase.structure.core.Column#22071688",
+              "liquibase.structure.core.Column#22071689",
+              "liquibase.structure.core.Column#22071690"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#22071680",
+              "liquibase.structure.core.Index#22071681",
+              "liquibase.structure.core.Index#22071683"
+            ]
+            ,
+            "name": "cards",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#22071691"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#22071698",
+            "schema": "liquibase.structure.core.Schema#22071650",
+            "snapshotId": "22071679"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#22071702",
+              "liquibase.structure.core.Column#22071706",
+              "liquibase.structure.core.Column#22071708",
+              "liquibase.structure.core.Column#22071704"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#22071701",
+              "liquibase.structure.core.Index#22071703",
+              "liquibase.structure.core.Index#22071705",
+              "liquibase.structure.core.Index#22071707",
+              "liquibase.structure.core.Index#22071709"
+            ]
+            ,
+            "name": "credentials",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#22071710",
+              "liquibase.structure.core.ForeignKey#22071724",
+              "liquibase.structure.core.ForeignKey#22071737"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#22071744",
+            "schema": "liquibase.structure.core.Schema#22071650",
+            "snapshotId": "22071700"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#22071669",
+              "liquibase.structure.core.Column#22071672",
+              "liquibase.structure.core.Column#22071673",
+              "liquibase.structure.core.Column#22071674"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#22071671"
+            ]
+            ,
+            "name": "currencies",
+            "primaryKey": "liquibase.structure.core.PrimaryKey#22071675",
+            "schema": "liquibase.structure.core.Schema#22071650",
+            "snapshotId": "22071670"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#22071728",
+              "liquibase.structure.core.Column#22071725",
+              "liquibase.structure.core.Column#22071730",
+              "liquibase.structure.core.Column#22071731",
+              "liquibase.structure.core.Column#22071732",
+              "liquibase.structure.core.Column#22071733",
+              "liquibase.structure.core.Column#22071734",
+              "liquibase.structure.core.Column#22071735"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#22071727",
+              "liquibase.structure.core.Index#22071729"
+            ]
+            ,
+            "name": "login_details",
+            "primaryKey": "liquibase.structure.core.PrimaryKey#22071736",
+            "schema": "liquibase.structure.core.Schema#22071650",
+            "snapshotId": "22071726"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#22071755",
+              "liquibase.structure.core.Column#22071761",
+              "liquibase.structure.core.Column#22071759",
+              "liquibase.structure.core.Column#22071764",
+              "liquibase.structure.core.Column#22071765",
+              "liquibase.structure.core.Column#22071757",
+              "liquibase.structure.core.Column#22071766",
+              "liquibase.structure.core.Column#22071767",
+              "liquibase.structure.core.Column#22071768",
+              "liquibase.structure.core.Column#22071763"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#22071754",
+              "liquibase.structure.core.Index#22071756",
+              "liquibase.structure.core.Index#22071758",
+              "liquibase.structure.core.Index#22071760",
+              "liquibase.structure.core.Index#22071762"
+            ]
+            ,
+            "name": "operations",
+            "outgoingForeignKeys": [
+              "liquibase.structure.core.ForeignKey#22071769",
+              "liquibase.structure.core.ForeignKey#22071770"
+            ]
+            ,
+            "primaryKey": "liquibase.structure.core.PrimaryKey#22071771",
+            "schema": "liquibase.structure.core.Schema#22071650",
+            "snapshotId": "22071753"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#22071692",
+              "liquibase.structure.core.Column#22071695",
+              "liquibase.structure.core.Column#22071696"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#22071694"
+            ]
+            ,
+            "name": "packages",
+            "primaryKey": "liquibase.structure.core.PrimaryKey#22071697",
+            "schema": "liquibase.structure.core.Schema#22071650",
+            "snapshotId": "22071693"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#22071741",
+              "liquibase.structure.core.Column#22071738"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#22071740",
+              "liquibase.structure.core.Index#22071742"
+            ]
+            ,
+            "name": "roles",
+            "primaryKey": "liquibase.structure.core.PrimaryKey#22071743",
+            "schema": "liquibase.structure.core.Schema#22071650",
+            "snapshotId": "22071739"
+          }
+        },
+        {
+          "table": {
+            "columns": [
+              "liquibase.structure.core.Column#22071711",
+              "liquibase.structure.core.Column#22071714",
+              "liquibase.structure.core.Column#22071715",
+              "liquibase.structure.core.Column#22071716",
+              "liquibase.structure.core.Column#22071717",
+              "liquibase.structure.core.Column#22071718",
+              "liquibase.structure.core.Column#22071719",
+              "liquibase.structure.core.Column#22071720",
+              "liquibase.structure.core.Column#22071721",
+              "liquibase.structure.core.Column#22071722"
+            ]
+            ,
+            "indexes": [
+              "liquibase.structure.core.Index#22071713"
+            ]
+            ,
+            "name": "users",
+            "primaryKey": "liquibase.structure.core.PrimaryKey#22071723",
+            "schema": "liquibase.structure.core.Schema#22071650",
+            "snapshotId": "22071712"
           }
         }
-      },
-      "LoginDetail": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "email": {
-            "type": "string"
-          },
-          "password": {
-            "type": "string"
-          },
-          "lastLoginDate": {
-            "type": "string",
-            "format": "date"
-          },
-          "loginAttempts": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "userStatus": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "passwordHashSalt": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "twoFactorAuthEnabled": {
-            "type": "boolean"
-          }
-        }
-      },
-      "Role": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "role": {
-            "type": "string"
-          }
-        }
-      },
-      "Credential": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "user": {
-            "$ref": "#/components/schemas/User"
-          },
-          "email": {
-            "$ref": "#/components/schemas/LoginDetail"
-          },
-          "role": {
-            "$ref": "#/components/schemas/Role"
-          }
-        }
-      },
-      "PagedModelCredential": {
-        "type": "object",
-        "properties": {
-          "page": {
-            "$ref": "#/components/schemas/PageMetadata"
-          },
-          "content": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Credential"
-            }
-          }
-        }
-      },
-      "PagedModelCurrency": {
-        "type": "object",
-        "properties": {
-          "page": {
-            "$ref": "#/components/schemas/PageMetadata"
-          },
-          "content": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Currency"
-            }
-          }
-        }
-      },
-      "PagedModelLoginDetail": {
-        "type": "object",
-        "properties": {
-          "page": {
-            "$ref": "#/components/schemas/PageMetadata"
-          },
-          "content": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/LoginDetail"
-            }
-          }
-        }
-      },
-      "Operation": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "currency": {
-            "$ref": "#/components/schemas/Currency"
-          },
-          "card": {
-            "$ref": "#/components/schemas/Card"
-          },
-          "recipientDetails": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "value": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "dateTime": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "operationType": {
-            "type": "string"
-          },
-          "status": {
-            "type": "string"
-          },
-          "description": {
-            "type": "string"
-          },
-          "referenceNumber": {
-            "type": "integer",
-            "format": "int64"
-          }
-        }
-      },
-      "PagedModelOperation": {
-        "type": "object",
-        "properties": {
-          "page": {
-            "$ref": "#/components/schemas/PageMetadata"
-          },
-          "content": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Operation"
-            }
-          }
-        }
-      },
-      "PagedModelPackage": {
-        "type": "object",
-        "properties": {
-          "page": {
-            "$ref": "#/components/schemas/PageMetadata"
-          },
-          "content": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Package"
-            }
-          }
-        }
-      },
-      "PagedModelRole": {
-        "type": "object",
-        "properties": {
-          "page": {
-            "$ref": "#/components/schemas/PageMetadata"
-          },
-          "content": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Role"
-            }
-          }
-        }
-      },
-      "PagedModelUser": {
-        "type": "object",
-        "properties": {
-          "page": {
-            "$ref": "#/components/schemas/PageMetadata"
-          },
-          "content": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/User"
-            }
-          }
-        }
+      ]
+      
+    },
+    "snapshotControl": {
+      "snapshotControl": {
+        "includedType": [
+          "liquibase.structure.core.Catalog",
+          "liquibase.structure.core.Column",
+          "liquibase.structure.core.ForeignKey",
+          "liquibase.structure.core.Index",
+          "liquibase.structure.core.PrimaryKey",
+          "liquibase.structure.core.Schema",
+          "liquibase.structure.core.Sequence",
+          "liquibase.structure.core.Table",
+          "liquibase.structure.core.UniqueConstraint",
+          "liquibase.structure.core.View"
+        ]
+        
       }
     }
   }

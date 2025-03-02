@@ -4,6 +4,7 @@ import {
   ListGuesser,
   EditGuesser,
   ShowGuesser,
+  CustomRoutes,
 } from "react-admin";
 import {
   amplicodeDarkTheme,
@@ -25,9 +26,20 @@ import { CurrenciesList } from "./currencies/CurrenciesList";
 import { CredentialsList } from "./credentials/CredentialsList";
 import { CardsList } from "./cards/CardsList";
 import { LoginDetailsList } from "./loginDetails/LoginDetailsList";
+import { Dashboard } from "./dashboard/Dashboard";
+import { Route } from "react-router-dom";
+
+// Иконки для категорий
+import PeopleIcon from '@mui/icons-material/People';
+import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
+import SettingsIcon from '@mui/icons-material/Settings';
+import PaymentIcon from '@mui/icons-material/Payment';
+import SecurityIcon from '@mui/icons-material/Security';
+import LocalOfferIcon from "@mui/icons-material/LocalOffer";
+import { OperationsCreate } from "./operations/OperationsCreate";
+import { CredentialsCreate } from "./credentials/CredentialsCreate";
 
 export const App = () => {
-
   const [key, setKey] = useState<undefined | null | string | number | bigint>();
 
   return (
@@ -35,46 +47,17 @@ export const App = () => {
       dataProvider={dataProvider}
       lightTheme={amplicodeLightTheme}
       darkTheme={amplicodeDarkTheme}
+      dashboard={Dashboard}
     >
-      <Resource
-        name="cards"
-        edit={EditGuesser}
-        list={CardsList}
-        show={ShowGuesser}
-        recordRepresentation="holderName"
-      />
+      <CustomRoutes>
+        <Route path="/" element={<Dashboard />} />
+      </CustomRoutes>
 
-      <Resource
-        name="credentials"
-        edit={EditGuesser}
-        list={CredentialsList}
-        show={ShowGuesser}
-      />
-
-      <Resource
-        name="currencies"
-        edit={EditGuesser}
-        list={CurrenciesList}
-        show={ShowGuesser}
-      />
-
-      <Resource
-        name="operations"
-        edit={EditGuesser}
-        list={OperationsList}
-        show={ShowGuesser}
-      />
-
-      <Resource
-        name="packages"
-        edit={EditGuesser}
-        list={PackagesList}
-        show={ShowGuesser}
-        recordRepresentation="name"
-      />
-
+      {/* Категория: Пользователи и роли */}
       <Resource
         name="users"
+        icon={PeopleIcon}
+        options={{ label: "Пользователи" }}
         edit={EditGuesser}
         list={UsersList}
         show={ShowGuesser}
@@ -83,16 +66,9 @@ export const App = () => {
       />
 
       <Resource
-        name="bankAccounts"
-        options={{ label: "Bank Accounts" }}
-        edit={BankAccountsEdit}
-        list={BankAccountsList}
-        show={BankAccountsShow}
-        create={BankAccountsCreate}
-      />
-
-      <Resource
         name="roles"
+        icon={SettingsIcon}
+        options={{ label: "Роли" }}
         edit={EditGuesser}
         list={RolesList}
         show={ShowGuesser}
@@ -101,8 +77,68 @@ export const App = () => {
 
       <Resource
         name="loginDetails"
-        options={{ label: "Login Details" }}
+        icon={SecurityIcon}
+        options={{ label: "Логины" }}
         list={LoginDetailsList}
+      />
+
+      {/* Категория: Финансы */}
+      <Resource
+        name="bankAccounts"
+        icon={AccountBalanceIcon}
+        options={{ label: "Банковские счета" }}
+        edit={BankAccountsEdit}
+        list={BankAccountsList}
+        show={BankAccountsShow}
+        create={BankAccountsCreate}
+      />
+
+      <Resource
+        name="cards"
+        icon={PaymentIcon}
+        options={{ label: "Карты" }}
+        edit={EditGuesser}
+        list={CardsList}
+        show={ShowGuesser}
+        recordRepresentation="holderName"
+      />
+
+      <Resource
+        name="currencies"
+        options={{ label: "Валюты" }}
+        edit={EditGuesser}
+        list={CurrenciesList}
+        show={ShowGuesser}
+      />
+
+      <Resource
+        name="operations"
+        options={{ label: "Операции" }}
+        edit={EditGuesser}
+        list={OperationsList}
+        show={ShowGuesser}
+        create={OperationsCreate}
+      />
+
+      {/* Категория: Прочее */}
+      <Resource
+        name="packages"
+        icon={LocalOfferIcon}
+        options={{ label: "Пакеты" }}
+        edit={EditGuesser}
+        list={PackagesList}
+        show={ShowGuesser}
+        recordRepresentation="name"
+      />
+
+      <Resource
+        name="credentials"
+        icon={SecurityIcon}
+        options={{ label: "Учетные данные" }}
+        edit={EditGuesser}
+        list={CredentialsList}
+        show={ShowGuesser}
+        create={CredentialsCreate}
       />
     </Admin>
   );
