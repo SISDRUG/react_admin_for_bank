@@ -39,7 +39,7 @@ export const UsersCreate = () => {
   const notify = useNotify();
   const redirect = useRedirect();
 
-  const handleSubmit = async (data: any) => {
+    const handleSubmit = async (data: any) => {
     try {
       // Здесь может быть дополнительная обработка данных перед отправкой
       notify('Пользователь успешно создан', { type: 'success' });

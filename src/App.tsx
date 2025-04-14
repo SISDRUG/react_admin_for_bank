@@ -11,7 +11,7 @@ import {
   amplicodeLightTheme,
 } from "./themes/amplicodeTheme/amplicodeTheme";
 import { dataProvider } from "./dataProvider";
-import { useCallback, useState } from "react";
+import { useCallback, useState, useRef, useEffect } from "react";
 import { RolesCreate } from "./roles/RolesCreate";
 import { BankAccountsCreate } from "./bankAccounts/BankAccountsCreate";
 import { BankAccountsEdit } from "./bankAccounts/BankAccountsEdit";
@@ -38,12 +38,42 @@ import SecurityIcon from '@mui/icons-material/Security';
 import LocalOfferIcon from "@mui/icons-material/LocalOffer";
 import { OperationsCreate } from "./operations/OperationsCreate";
 import { CredentialsCreate } from "./credentials/CredentialsCreate";
+import Keycloak, { KeycloakInitOptions } from "keycloak-js";
+import { keycloakClient, authProvider } from "./keycloakAuthProvider";
 
+const initOptions: KeycloakInitOptions = { 
+  onLoad: "login-required",
+  pkceMethod: 'S256'
+ };
 export const App = () => {
-  const [key, setKey] = useState<undefined | null | string | number | bigint>();
+  const [keycloak, setKeycloak] = useState<Keycloak | null>(null);
+  const initializingPromise = useRef<Promise<Keycloak>>();
+
+  useEffect(() => {
+    const initKeyCloakClient = async () => {
+      try {
+        await keycloakClient.init(initOptions);
+        console.log("Keycloak initialized successfully");
+        return keycloakClient;
+      } catch (error) {
+        console.error("Failed to initialize Keycloak:", error);
+        throw error;
+      }
+    };
+
+    if (!initializingPromise.current) {
+      initializingPromise.current = initKeyCloakClient();
+      initializingPromise.current
+        .then((client) => setKeycloak(client))
+        .catch((error) => console.error("Error setting Keycloak client:", error));
+    }
+  }, []); // Пустой массив зависимостей!
+
+  if (!keycloak) return <p>Loading...</p>;
 
   return (
     <Admin
+      authProvider={authProvider}
       dataProvider={dataProvider}
       lightTheme={amplicodeLightTheme}
       darkTheme={amplicodeDarkTheme}
