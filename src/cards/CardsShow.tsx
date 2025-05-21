@@ -1,17 +1,15 @@
 import {
-  List,
-  Datagrid,
+  Show,
+  SimpleShowLayout,
   NumberField,
   TextField,
-  DateField,
   BooleanField,
-  EditButton,
-  DeleteButton,
   ReferenceField,
   useRecordContext,
   WrapperField,
 } from "react-admin";
 
+// Компонент для отображения срока действия карты (месяц/год)
 const ExpiryField = () => {
   const record = useRecordContext();
   if (!record) return null;
@@ -25,15 +23,17 @@ const ExpiryField = () => {
   );
 };
 
-export const CardsList = () => {
+export const CardsShow = () => {
   return (
-    <List resource="cards">
-      <Datagrid rowClick="show">
+    <Show resource="cards">
+      <SimpleShowLayout>
         <NumberField source="id" />
         <NumberField source="balance" />
-        <ReferenceField source="id" reference="packages" label="package">
+        {/* Отображение пакета через ReferenceField */}
+        <ReferenceField source="packageField.id" reference="packages" label="Пакет">
             <TextField source="name" />
         </ReferenceField>
+        {/* Кастомное поле для срока действия */}
         <WrapperField label="Срок действия">
           <ExpiryField />
         </WrapperField>
@@ -41,11 +41,7 @@ export const CardsList = () => {
         <TextField source="cardStatus" />
         <TextField source="holderName" />
         <BooleanField source="isVirtual" />
-        <>
-          <EditButton />
-          <DeleteButton />
-        </>
-      </Datagrid>
-    </List>
+      </SimpleShowLayout>
+    </Show>
   );
-};
+}; 

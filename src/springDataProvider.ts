@@ -1,5 +1,19 @@
 import { stringify } from "query-string";
 import { DataProvider, fetchUtils } from "react-admin";
+import Keycloak, { KeycloakConfig, KeycloakTokenParsed } from "keycloak-js";
+import { httpClient, keycloakAuthProvider } from "ra-keycloak";
+
+const keycloakConfig: KeycloakConfig = {
+  url: "http://localhost:9080/", // адрес вашего Keycloak
+  realm: "master",
+  clientId: "admin-ui"
+};
+
+export const keycloakClient = new Keycloak(keycloakConfig);
+export const keycloakHttpClient = httpClient(keycloakClient);
+export const authProvider = keycloakAuthProvider(keycloakClient, {
+  onPermissions: (decoded: KeycloakTokenParsed) => decoded,
+});
 
 export default (
   apiUrl: string,

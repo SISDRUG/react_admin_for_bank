@@ -28,6 +28,14 @@ import { CardsList } from "./cards/CardsList";
 import { LoginDetailsList } from "./loginDetails/LoginDetailsList";
 import { Dashboard } from "./dashboard/Dashboard";
 import { Route } from "react-router-dom";
+import { LoginDetailsShow } from "./loginDetails/LoginDetailsShow";
+import { LoginDetailsEdit } from "./loginDetails/LoginDetailsEdit";
+import { CardsShow } from "./cards/CardsShow";
+import { CardsEdit } from "./cards/CardsEdit";
+import { LoginDetailsCreate } from "./loginDetails/LoginDetailsCreate";
+import { CardsCreate } from "./cards/CardsCreate";
+import { CurrenciesCreate } from "./currencies/CurrenciesCreate";
+import { PackagesCreate } from "./packages/PackagesCreate";
 
 // Иконки для категорий
 import PeopleIcon from '@mui/icons-material/People';
@@ -110,6 +118,9 @@ export const App = () => {
         icon={SecurityIcon}
         options={{ label: "Логины" }}
         list={LoginDetailsList}
+        show={LoginDetailsShow}
+        edit={LoginDetailsEdit}
+        create={LoginDetailsCreate}
       />
 
       {/* Категория: Финансы */}
@@ -127,10 +138,11 @@ export const App = () => {
         name="cards"
         icon={PaymentIcon}
         options={{ label: "Карты" }}
-        edit={EditGuesser}
+        edit={CardsEdit}
         list={CardsList}
-        show={ShowGuesser}
+        show={CardsShow}
         recordRepresentation="holderName"
+        create={CardsCreate}
       />
 
       <Resource
@@ -139,6 +151,7 @@ export const App = () => {
         edit={EditGuesser}
         list={CurrenciesList}
         show={ShowGuesser}
+        create={CurrenciesCreate}
       />
 
       <Resource
@@ -159,6 +172,7 @@ export const App = () => {
         list={PackagesList}
         show={ShowGuesser}
         recordRepresentation="name"
+        create={PackagesCreate}
       />
 
       <Resource
