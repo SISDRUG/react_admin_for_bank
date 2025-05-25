@@ -7,6 +7,7 @@ const clientId = import.meta.env.VITE_KC_CLIENT_ID as string;
 
 const keycloakConfig: KeycloakConfig = {
   url: "http://localhost:9080/",
+  // url: 'http://172.20.10.2:9080',
   realm: "master",
   clientId: "admin-ui",
 };
